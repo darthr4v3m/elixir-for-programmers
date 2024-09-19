@@ -12,7 +12,6 @@ defmodule Hangman do
 
   @spec new_game :: game
   defdelegate new_game, to: Game
-  def new_game
 
   @spec make_move(game, String.t()) :: {game, tally}
   def make_move(_game, _guess) do
