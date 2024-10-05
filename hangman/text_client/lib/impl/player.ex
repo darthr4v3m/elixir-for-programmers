@@ -41,9 +41,9 @@ defmodule TextClient.Impl.Player do
     [
       "Word so far: ",
       tally.letters |> Enum.join(" "),
-      "   turns left: ",
+      IO.ANSI.green() <> "   turns left: " <> IO.ANSI.reset(),
       tally.turns_left |> to_string,
-      "   used so far: ",
+      IO.ANSI.green() <> "   used so far: " <> IO.ANSI.reset(),
       tally.used |> Enum.join(",")
     ]
   end
