@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "game-logic",
-        "text-client"
+        "text-client",
+        "dictionary"
     ]
 }
