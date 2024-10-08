@@ -1,6 +1,10 @@
 defmodule Procs do
-	def hello(name) do
-		Process.sleep(1000)
-		IO.puts("Hello #{name}")
-	end
+  def hello() do
+    receive do
+      msg ->
+        IO.puts("Hello #{inspect(msg)}")
+    end
+
+    hello()
+  end
 end
