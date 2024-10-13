@@ -10,6 +10,9 @@ defmodule Procs do
 
   def hello(count) do
     receive do
+      {:crash, reason} ->
+        exit(reason)
+
       :reset ->
         hello(0)
 
