@@ -3,6 +3,7 @@
         "game-logic",
         "text-client",
         "dictionary",
-        "processes"
+        "processes",
+        "server"
     ]
 }
