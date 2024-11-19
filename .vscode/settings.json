@@ -4,6 +4,7 @@
         "text-client",
         "dictionary",
         "processes",
-        "server"
+        "server",
+        "api"
     ]
 }

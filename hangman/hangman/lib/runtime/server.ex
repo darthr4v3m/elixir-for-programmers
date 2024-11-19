@@ -1,6 +1,6 @@
 defmodule Hangman.Runtime.Server do
+  @type t :: pid
   alias Hangman.Impl.Game
-
   use GenServer
 
   ### client process
