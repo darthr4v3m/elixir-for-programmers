@@ -5,6 +5,7 @@
         "dictionary",
         "processes",
         "server",
-        "api"
+        "api",
+        "nodes"
     ]
 }
