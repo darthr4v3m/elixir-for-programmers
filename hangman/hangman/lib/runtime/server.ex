@@ -10,6 +10,7 @@ defmodule Hangman.Runtime.Server do
 
   ### server process
   def init(_) do
+    IO.puts("New game starting!🥳")
     {:ok, Game.new_game()}
   end
 

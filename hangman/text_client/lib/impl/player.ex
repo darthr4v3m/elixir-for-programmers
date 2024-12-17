@@ -16,7 +16,7 @@ defmodule TextClient.Impl.Player do
   end
 
   def interact({game, _tally = %{game_state: :lost}}) do
-    IO.puts("Sorry, you lost... thre word was #{game.letters |> Enum.join()}")
+    IO.puts("Sorry, you lost... the word was #{game.letters |> Enum.join()}")
   end
 
   def interact({game, tally}) do
@@ -25,8 +25,8 @@ defmodule TextClient.Impl.Player do
     # display current word
     IO.puts(current_word(tally))
     # get next guess
-    Hangman.make_move(game, get_guess())
-    |> interact()
+    tally = Hangman.make_move(game, get_guess())
+    interact({game, tally})
   end
 
   def feedback_for(tally = %{game_state: :initializing}) do
