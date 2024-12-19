@@ -6,6 +6,7 @@
         "processes",
         "server",
         "api",
-        "nodes"
+        "nodes",
+        "phoenix"
     ]
 }
