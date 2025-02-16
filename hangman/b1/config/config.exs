@@ -7,40 +7,21 @@
 # General application configuration
 import Config
 
-config :b1,
-  generators: [timestamp_type: :utc_datetime]
-
 # Configures the endpoint
 config :b1, B1Web.Endpoint,
   url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
-  render_errors: [
-    formats: [html: B1Web.ErrorHTML, json: B1Web.ErrorJSON],
-    layout: false
-  ],
+  render_errors: [view: B1Web.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: B1.PubSub,
-  live_view: [signing_salt: "V1I/bB4J"]
+  live_view: [signing_salt: "TZqu6E6U"]
 
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.17.11",
-  b1: [
+  version: "0.12.18",
+  default: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
-
-# Configure tailwind (the version is required)
-config :tailwind,
-  version: "3.4.3",
-  b1: [
-    args: ~w(
-      --config=tailwind.config.js
-      --input=css/app.css
-      --output=../priv/static/assets/app.css
-    ),
-    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configures Elixir's Logger

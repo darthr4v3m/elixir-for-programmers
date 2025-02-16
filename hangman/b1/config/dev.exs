@@ -4,8 +4,8 @@ import Config
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
-# watchers to your application. For example, we can use it
-# to bundle .js and .css sources.
+# watchers to your application. For example, we use it
+# with esbuild to bundle .js and .css sources.
 config :b1, B1Web.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
@@ -13,10 +13,10 @@ config :b1, B1Web.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "L6rvEO2Vr31l9Tu0rN9qO/Pdt53gV0viJesUdf3SGR9Ts7A0NiiLyS+IOZDzZibg",
+  secret_key_base: "ZQPxyBDZtlE4q0hRJY02qul3DXlRjYS2GXuwRZ7yaWDhqXZmD/vrCstYUKTqKsGD",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:b1, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:b1, ~w(--watch)]}
+    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
@@ -27,6 +27,7 @@ config :b1, B1Web.Endpoint,
 #
 #     mix phx.gen.cert
 #
+# Note that this task requires Erlang/OTP 20 or later.
 # Run `mix help phx.gen.cert` for more information.
 #
 # The `http:` config above can be replaced with:
@@ -46,13 +47,11 @@ config :b1, B1Web.Endpoint,
 config :b1, B1Web.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"lib/b1_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"lib/b1_web/(live|views)/.*(ex)$",
+      ~r"lib/b1_web/templates/.*(eex)$"
     ]
   ]
-
-# Enable dev routes for dashboard and mailbox
-config :b1, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
@@ -63,9 +62,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-config :phoenix_live_view,
-  # Include HEEx debug annotations as HTML comments in rendered markup
-  debug_heex_annotations: true,
-  # Enable helpful, but potentially expensive runtime checks
-  enable_expensive_runtime_checks: true

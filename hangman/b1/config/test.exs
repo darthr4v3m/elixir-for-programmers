@@ -4,15 +4,11 @@ import Config
 # you can enable the server option below.
 config :b1, B1Web.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "t8YqqawJIcgACAqozyUJM8xX0RZub3U5XjmLb6hJXiAqc3CIas/ZtGNKybSACVbr",
+  secret_key_base: "dlW2zPWSZtcs2E7pdNzFhIjGx+Wevj2X41xL2MQeJB/w4wt/kL8ev1uyj/+oPfUo",
   server: false
 
 # Print only warnings and errors during test
-config :logger, level: :warning
+config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
-
-# Enable helpful, but potentially expensive runtime checks
-config :phoenix_live_view,
-  enable_expensive_runtime_checks: true

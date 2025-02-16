@@ -8,13 +8,14 @@ defmodule B1.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      # Start the Telemetry supervisor
       B1Web.Telemetry,
-      {DNSCluster, query: Application.get_env(:b1, :dns_cluster_query) || :ignore},
+      # Start the PubSub system
       {Phoenix.PubSub, name: B1.PubSub},
-      # Start a worker by calling: B1.Worker.start_link(arg)
-      # {B1.Worker, arg},
-      # Start to serve requests, typically the last entry
+      # Start the Endpoint (http/https)
       B1Web.Endpoint
+      # Start a worker by calling: B1.Worker.start_link(arg)
+      # {B1.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

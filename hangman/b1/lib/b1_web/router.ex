@@ -5,7 +5,7 @@ defmodule B1Web.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {B1Web.Layouts, :root}
+    plug :put_root_layout, {B1Web.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,10 +14,10 @@ defmodule B1Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/hangman", B1Web do
+  scope "/", B1Web do
     pipe_through :browser
 
-    get "/", HangmanController, :home
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
