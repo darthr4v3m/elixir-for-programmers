@@ -7,6 +7,7 @@
         "server",
         "api",
         "nodes",
-        "phoenix"
+        "phoenix",
+        "web"
     ]
 }
