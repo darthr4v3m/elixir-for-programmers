@@ -10,8 +10,7 @@ defmodule B1Web.HangmanController do
 
     conn
     |> put_session(:game, game)
-
-    redirect(conn, to: Routes.hangman_path(conn, :show))
+    |> redirect(to: Routes.hangman_path(conn, :show))
   end
 
   def update(conn, params) do
