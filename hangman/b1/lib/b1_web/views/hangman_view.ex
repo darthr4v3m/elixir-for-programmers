@@ -7,7 +7,11 @@ defmodule B1Web.HangmanView do
 
   def continue_or_try_again(conn, _) do
     form_for(conn, Routes.hangman_path(conn, :update), [as: "make_move", method: :put], fn f ->
-      [text_input(f, :guess), " ", submit("Make next guess")]
+      [
+        text_input(f, :guess),
+        " ",
+        submit("Make next guess")
+      ]
     end)
   end
 
