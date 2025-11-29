@@ -1,5 +1,39 @@
 /* This file is for your main application CSS */
 @import "./phoenix.css";
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+
+/* Overall page layout */
+body {
+  font-family: 'Short Stack', cursive;
+}
+
+
+
+.game-holder {
+  max-height: 70%; 
+  margin-top: 15%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.game-holder .figure {
+  flex-basis: 40%;
+  min-width: 400px;
+  
+} 
+
+.game-holder .letter-stuff {
+  flex-basis: 40%;
+  display: flex;
+  flex-flow: column;
+}
+
+
+/* Stylin' */
 
 .alphabet {
   display: flex;
@@ -10,9 +44,10 @@
   margin-bottom: 10%;
 }
 
+
 .one-letter         { color: #8888bb; }
 .one-letter.correct { color: #88bb88; }
-.one-letter.wrong { color: #bf4949; }
+.one-letter.wrong   { color: #bb4444; opacity: 20%; }
 
 
 .letters .one-letter {
@@ -21,89 +56,28 @@
   display: inline-block;
 } 
 
-/* Alerts and form errors used by phx.new */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert p {
-  margin-bottom: 0;
-}
-.alert:empty {
-  display: none;
-}
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+.ls-won .one-letter, .ls-lost .one-letter {
+  display: inline;
+} 
+
+.figure svg {
+  max-height: 60vh;
 }
 
-/* LiveView specific classes for your customization */
-.phx-no-feedback.invalid-feedback,
-.phx-no-feedback .invalid-feedback {
-  display: none;
+.turns-left {
+  display: inline-block;
+  position: relative;
+  top: -30vh;
+  margin-right: 20%;
+  max-width: 30%;
+  color: #552244;
+}
+  
+
+.hide-component {
+    opacity: 0.1;
 }
 
-.phx-click-loading {
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
-}
-
-.phx-disconnected{
-  cursor: wait;
-}
-.phx-disconnected *{
-  pointer-events: none;
-}
-
-.phx-modal {
-  opacity: 1!important;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.phx-modal-content {
-  background-color: #fefefe;
-  margin: 15vh auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.phx-modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.phx-modal-close:hover,
-.phx-modal-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+svg path {
+    transition: opacity 0.5s;
+} 

@@ -16,7 +16,7 @@ defmodule B2Web.Live.Game.Alphabet do
            class="one-letter <%= classOf(letter, @tally) %>">
         <%= letter %>
       </div>
-      <%= end %>
+      <% end %>
     </div>
     """
   end
